@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
         mBtnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mStartDate > mEndDate){
-                    Toast.makeText(MainActivity.this, "Ошибка, время старта позже времени окончания", Toast.LENGTH_LONG).show();
+                if (mStartDate >= mEndDate){
+                    Toast.makeText(MainActivity.this, "Введены неверные данные", Toast.LENGTH_LONG).show();
                     mChooseStartDate.setText("Дата-время старта задачи:");
                     mChooseEndDate.setText("Дата-время окончания задачи:");
                 } else {
