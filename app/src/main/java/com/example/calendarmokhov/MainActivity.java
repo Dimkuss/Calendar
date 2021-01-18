@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 mStartDateTxt = i+"-"+i1+"-"+i2;
-                mChooseStartDate.setText("Дата-время старта задачи: " + mStartDateTxt);
+                mChooseStartDate.setText(getString(R.string.startDate) + mStartDateTxt);
                 GregorianCalendar gregorianCalendar = new GregorianCalendar();
                 gregorianCalendar.set(i, i1, i2);
                 mStartDate = gregorianCalendar.getTimeInMillis();
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         mEndtDateCalendar.setOnDateChangeListener((calendarView, i, i1, i2) -> {
             mEndDateTxt = i+"-"+i1+"-"+i2;
-            mChooseEndDate.setText("Дата-время окончания задачи: " + mEndDateTxt);
+            mChooseEndDate.setText(R.string.endDate + mEndDateTxt);
             GregorianCalendar gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.set(i, i1, i2);
             mEndDate = gregorianCalendar.getTimeInMillis();
@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
         mBtnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mStartDate >= mEndDate){
-                    Toast.makeText(MainActivity.this, "Введены неверные данные", Toast.LENGTH_LONG).show();
-                    mChooseStartDate.setText("Дата-время старта задачи:");
-                    mChooseEndDate.setText("Дата-время окончания задачи:");
+                if ((mStartDate >= mEndDate) || ((mStartDate == 0) || (mEndDate == 0))){
+                    Toast.makeText(MainActivity.this, R.string.warn, Toast.LENGTH_LONG).show();
+                    mChooseStartDate.setText(R.string.startDate);
+                    mChooseEndDate.setText(R.string.endDate);
                 } else {
-                    Toast.makeText(MainActivity.this, "старт: " + mStartDateTxt + " окончаниe: " + mEndDateTxt, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.start + mStartDateTxt + R.string.done + mEndDateTxt, Toast.LENGTH_LONG).show();
                 }
             }
         });

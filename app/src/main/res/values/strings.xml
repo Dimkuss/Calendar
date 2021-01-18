@@ -3,4 +3,8 @@
     <string name="startDate">Дата-время старта задачи:</string>
     <string name="endDate">Дата-время окончания задачи:</string>
     <string name="Ok">OK</string>
+    <string name="start">Старт</string>
+    <string name="done">Окончание</string>
+    <string name="warn">Введены неверные данные</string>
+
 </resources>
